@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\TransaccionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('categorias', CategoriaController::class);
     Route::resource('cuentas', CuentaController::class);
+    Route::resource('transacciones', TransaccionController::class)
+    ->parameters(['transacciones' => 'transaccion']);
 });
 
 require __DIR__.'/auth.php';
